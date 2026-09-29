@@ -79,16 +79,19 @@ class MentionSelectView(LayoutView):
                 f"> {ARROWRED} **Prefix For This Server: `{self.prefix}`**\n\n"
                 f"___Type `{self.prefix}help` for more information.___"
             )
+
         elif selected == "Developer Info":
             content = (
-                "There are only 2 Founders Who Created Me. Thanks You To Them.\n\n"
+                "There are only 2 Founders Who Created Me. Thanks You To Them 💞.\n\n"
                 "**The Founder**\n"
-                "**[01]. [Lexxoo](https://discord.com/users/1514994884501835885)**\n**[02]. [rainyyy](https://discord.com/users/1514800162122236053)**"
+                "**[01]. [Lexxoo](https://discord.com/users/1514994884501835885)**\n"
+                "**[02]. [Rainyyy](https://discord.com/users/1514800162122236053)**"
             )
+
         elif selected == "Links":
             content = (
-                f"**[Invite {BotName}](https://discord.com/oauth2/authorize?client_id=1554602832890699877&permissions=8&integration_type=0&scope=bot+applications.commands)**\n"
-                "**[Join Support Server](https://discord.gg/rainyyy)**"
+                f"**[Invite {BotName}](https://discord.com/oauth2/authorize?client_id=1396114795102470196)**\n"
+                "**[Join Support Server](https://discord.gg/codexdev)**"
             )
 
         new_container = Container(
@@ -113,15 +116,19 @@ class Mention(commands.Cog):
     async def is_blacklisted(self, message):
         async with aiosqlite.connect("db/block.db") as db:
             cursor = await db.execute(
-                "SELECT 1 FROM guild_blacklist WHERE guild_id = ?", (message.guild.id,)
+                "SELECT 1 FROM guild_blacklist WHERE guild_id = ?",
+                (message.guild.id,)
             )
             if await cursor.fetchone():
                 return True
+
             cursor = await db.execute(
-                "SELECT 1 FROM user_blacklist WHERE user_id = ?", (message.author.id,)
+                "SELECT 1 FROM user_blacklist WHERE user_id = ?",
+                (message.author.id,)
             )
             if await cursor.fetchone():
                 return True
+
         return False
 
     @commands.Cog.listener()
@@ -133,6 +140,7 @@ class Mention(commands.Cog):
             return
 
         ignore_data = await get_ignore_data(message.guild.id)
+
         if (
             str(message.author.id) in ignore_data["user"]
             or str(message.channel.id) in ignore_data["channel"]
