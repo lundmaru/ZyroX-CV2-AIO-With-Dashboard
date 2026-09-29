@@ -76,8 +76,8 @@ def create_stats_content(stats_data, selected):
         "Team Info": (
             "There is only one person who made me. Thanks to him ❤️.\n\n"
             f"**{ZYROX_OWNER} Main Owner**\n"
-            "[01]. [runxking](https://discord.com/users/767979794411028491)\n"
-            "[02]. [Ray](https://discord.com/users/870179991462236170)"
+            "[01]. [Lexxoo](https://discord.com/users/1514994884501835885)\n"
+            "[02]. [Rainyyy](https://discord.com/users/1514800162122236053)"
         ),
         "Code Info": (
             f"**{ZYROX_SEARCH} Codebase Overview**\n\n"
